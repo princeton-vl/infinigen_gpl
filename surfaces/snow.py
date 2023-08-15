@@ -1,8 +1,8 @@
 # This code is derived from https://docs.blender.org/manual/en/latest/addons/object/real_snow.html under a GPL license. 
 
-from nodes.node_wrangler import Nodes
-from surfaces import surface
-from util.organization import SurfaceTypes
+from infinigen.core.nodes.node_wrangler import Nodes
+from infinigen.core import surface
+from infinigen.core.util.organization import SurfaceTypes
 
 type = SurfaceTypes.SDFPerturb
 mod_name = "geo_snowtexture"
