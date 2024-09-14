@@ -13,7 +13,10 @@ import numpy as np
 from mathutils import Vector, kdtree, noise
 
 sys.path.append(Path(os.getcwd()) / "../..")
-from util import blender as butil
+try:
+    from util import blender as butil
+except ImportError:
+    from infinigen.core.util import blender as butil
 
 def grow_step(bm, vg_index=0, split_radius=.5, repulsion_radius=1., dt=.1, growth_scale=(1, 1, 1),
               noise_scale=2., growth_vec=(0, 0, 1), fac_attr=1., fac_rep=1., fac_noise=1., inhibit_base=1.,
