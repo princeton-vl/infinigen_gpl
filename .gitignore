@@ -1,1 +1,7 @@
 __pycache__
+# build outputs of perf/
+*.so
+*.pyd
+_spin.cpp
+_voronoi.cpp
+_particle_sampler.cpp
