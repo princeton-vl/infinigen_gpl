@@ -1,17 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 """Deterministic native full-turn Z spin for mushroom construction."""
 
-import os
-
 import numpy as np
-
-
-def spin(*args, **kwargs):
-    from infinigen.assets.utils.draw import spin as legacy_spin
-
-    if os.environ.get("INFINIGEN_MUSHROOM_NATIVE_SPIN", "1") != "1":
-        return legacy_spin(*args, **kwargs)
-    return legacy_spin(*args, **kwargs, _spin_mesh=spin_mesh)
 
 
 def spin_mesh(obj, steps, axis, dupli):

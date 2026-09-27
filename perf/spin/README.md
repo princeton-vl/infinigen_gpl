@@ -13,9 +13,10 @@ Upstream: https://github.com/blender/blender/tree/v4.2.0/source/blender
 Built by Infinigen's `setup.py` when `INFINIGEN_INSTALL_PERF=True` and this
 submodule is checked out. Runtime never compiles code.
 
-Only the optimized mushroom (`MUSHROOM`) calls this, from its cap and stem
-construction. There it is on unless `INFINIGEN_MUSHROOM_NATIVE_SPIN=0`, which
-keeps Blender's spin operator. With `MUSHROOM` not selected nothing here runs.
+Only the optimized mushroom (`MUSHROOM`) calls this: its copy of `draw.spin`
+(`infinigen.perf.assets.objects.mushroom.meshing`) extrudes with `spin_mesh`
+in place of Blender's spin operator. With `MUSHROOM` not selected nothing here
+runs.
 
 This implements the full-turn, positive-Z-axis, identity-transform use case in
 mushrooms. It accepts unannotated wire profiles for extrusion and filled profiles
@@ -28,7 +29,8 @@ it never iterates a pointer hash. The final extrusion ring connects to the first
 ring, matching automatic full-turn merge. Duplication includes the last rotated
 copy, matching legacy duplication before remove-doubles. Python assembles the
 Blender mesh buffers, retaining the object and mesh datablock. Curve conversion,
-pre-weld, optional fill/remesh, and final remove-doubles stay in `draw.spin`.
+pre-weld, optional fill/remesh, and final remove-doubles stay in that copy of
+`draw.spin`.
 
 Changing legacy face ordering establishes a new baseline. It is not claimed
 byte-identical to legacy complete mushrooms, nor does it make `.blend` file
